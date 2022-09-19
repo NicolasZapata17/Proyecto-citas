@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica html-JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="index-2.css">
+
+    <!-- Link Sweetalert2 -->
+    <!-- <link rel="stylesheet" href="/node_modules/@sweetalert2/themes/bootstrap-4/bootstrap-4.css"> -->
+
+</head>
+<body onload="mostrarHora()" style="box-sizing:0; padding:0; margin:0;">
+
+    <!--Begin Navbar and header of the page -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid" style="background: #212529;">
+                <a class="navbar-brand" href="#" style="color: azure;">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color: azure;">Nuestros Servicios</a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: azure;">Atencion al cliente</a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: azure;">Contactanos</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: azure;">
+                        Otras Secciones
+                        </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Seccion 1</a></li>
+                        <li><a class="dropdown-item" href="#">Seccion 2</a></li>
+                        <li><a class="dropdown-item" href="#">Seccion 3</a></li>
+                    </ul>
+                    </li>
+                    <!-- <span class="" id="reloj" style="color:#fff;font-family:sans-serif; border:solid 1px #fff; border-radius:30px; font-size:20px; 
+                    padding:5px 15px; "> Hora del sistema:</span> -->
+                </ul>
+                </div>
+                    <button id="activar" onclick="mostrarOpciones();" style="border-radius:5px; margin-right:5px; font-size:14px;">MOSTRAR</button>
+                    <div id="opciones"hidden>
+                        <button id="aumentar"  onclick="aumentarTamanio();" class="btn btn-primary" style="background-color:#212529; color:#fff; border:0;">Aumentar tamaño</button>
+                        <button id="disminuir" onclick="disminuirTamanio();" class="btn btn-primary" style="background-color:#212529; color:#fff; border:0;">Disminuir tamaño</button>
+                        <label></label>
+                        <select id="select_color" onchange="cambiarColor();" class="btn btn-primary" style="background-color:#212529; color:#fff; border:0;">
+                            <option value=""></option>
+                            <option value="red">Rojo</option>
+                            <option value="blue">Azul</option>
+                            <option value="green">Verde</option>
+                            <option value="yellow">Amarillo</option>
+                        </select>
+                        <label></label>
+                        <select id="cambiaFuente" onchange="cambiarLetra();" class="btn btn-primary" style="background-color:#212529; color:#fff; border:0;">
+                            <option value=""></option>
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Tahoma">Tahoma</option>
+                        </select>
+
+                        <select id="cambiar_color_letra" onchange="cambiarColorLetra();" class="btn btn-primary" style="background-color:#212529; color:#fff; border:0;">
+                            <option value=""></option>
+                            <option value="red">Rojo</option>
+                            <option value="blue">Azul</option>
+                            <option value="green">Verde</option>
+                            <option value="yellow">Amarillo</option>
+                        </select>
+                        <label></label>
+                        <button id="ocultar" onclick="ocultar();" style="border-radius:5px; margin-right:5px; font-size:14px;">OCULTAR</button>  
+                        <button id="restablecer" onclick="restablecer();" style="border-radius:5px; margin-right:5px; font-size:14px;">RESTABLECER</button>                         
+                </div>
+            </div>
+        </nav>
+        
+
+    </header>
+    <!-- end of navbar and header -->
+
+
+    <!-- begin of the Form the page -->
+    <form class="row g-3 needs-validation" novalidate >
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltip01" aria-required="true" class="form-label">First name</label>
+            <input type="text" class="form-control" id="firtsname" required>
+            <div class="valid-tooltip">
+            Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltip02" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="lastname" required>
+            <div class="valid-tooltip">
+            Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltipUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+            <div class="invalid-tooltip">
+                Please choose a unique and valid username.
+            </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 position-relative">
+            <label for="validationTooltip03" class="form-label">City</label>
+            <input type="text" class="form-control" id="validationTooltip03" required>
+            <div class="invalid-tooltip">
+            Please provide a valid city.
+            </div>
+        </div>
+
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip04" class="form-label">State</label>
+            <select class="form-select" id="validationTooltip04" required>
+            <option selected disabled value="">Choose...</option>
+            <option>...</option>
+            </select>
+            <div class="invalid-tooltip">
+            Please select a valid state.
+            </div>
+        </div>
+
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip05" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="validationTooltip05" required>
+            <div class="invalid-tooltip">
+            Please provide a valid zip.
+            </div>
+        </div>
+
+        <!--begin of the Radio buttons -->
+        <div class="radio_button">
+            <label>¿Qué bebida desea?</label>
+            <div class="form-outline mb-4"></div>
+                <div class="form-check form-check-inline">
+                <label class="form-check-label">Coca Cola
+                <input class="form-check-input" type="radio" name="a" id="radio1" value="coca_cola" onchange="bebida();"/>
+                </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" >Pepsi
+                <input class="form-check-input" type="radio" name="a" id="radio2" value="pepsi"  onchange="bebida();"/>
+                </label>
+            </div>
+        
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" >Postobon
+                <input class="form-check-input" type="radio" name="a" id="radio3" value="postobon"  onchange="bebida()"/>
+                </label>
+            </div><br><br>
+
+            <div id="Calorias"></div>
+            <div id="Precio"></div>
+            <br>
+            <!-- end of the Radio buttons -->
+
+            
+            <!-- Begin of the checkbox -->
+            <!-- <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Carne</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Pollo</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                <label class="form-check-label" for="inlineCheckbox3">Pescado</label>
+            </div><br><br> -->
+            <!-- End of the CheckBox -->
+
+
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form><br>
+    <!-- End of form the page -->
+
+
+
+    <!-- Footer -->
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-facebook-f"></i
+            ></a>
+
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-twitter"></i
+        ></a>
+
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-google"></i
+            ></a>
+
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-instagram"></i
+        ></a>
+
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-linkedin-in"></i
+        ></a>
+
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-github"></i
+        ></a>
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section class="">
+        <form action="">
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                <strong>Sign up for our newsletter</strong>
+                </p>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-4">
+                <input type="email" id="form5Example21" class="form-control" />
+                <label class="form-label" for="form5Example21">Email address</label>
+                </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-outline-light mb-4">
+                Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </form>
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+            repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+            eum harum corrupti dicta, aliquam sequi voluptate quas.
+        </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        <section class="">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled mb-0">
+                <li>
+                <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 4</a>
+                </li>
+            </ul>
+        </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled mb-0">
+                <li>
+                <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 4</a>
+                </li>
+            </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled mb-0">
+                <li>
+                <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 4</a>
+                </li>
+            </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled mb-0">
+                <li>
+                <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Link 4</a>
+                </li>
+            </ul>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <script src="./script.js"></script>
+</body>
+</html>
